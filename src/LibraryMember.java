@@ -15,7 +15,7 @@ public class LibraryMember {
     public void setMemberId(){this.memberId = memberId;}
 
 
-    public void displayinfo(){
-        System.out.println("Читатель: " + name + " (ID: " + memberId + ")");
+    public void displayInfo(){
+        System.out.println("Member: " + name + " (ID: " + memberId + ")");
     }
 }
