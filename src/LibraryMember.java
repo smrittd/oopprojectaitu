@@ -9,10 +9,10 @@ public class LibraryMember {
 
 
     public String getName(){return name;}
-    public void setName(){this.name = name;}
+    public void setName(String name){this.name = name;}
 
     public String getMemberId(){return memberId;}
-    public void setMemberId(){this.memberId = memberId;}
+    public void setMemberId(String memberId){this.memberId = memberId;}
 
 
     public void displayInfo(){
