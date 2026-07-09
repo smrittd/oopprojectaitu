@@ -11,8 +11,8 @@ public class Library {
         this.books = new ArrayList<>();
     }
 
-    private String getLibraryName(){return LibraryName;}
-    private void setLibraryName(String libraryName){this.LibraryName = LibraryName;}
+    public String getLibraryName(){return LibraryName;}
+    public void setLibraryName(String libraryName){this.LibraryName = LibraryName;}
 
     public List<Book> getBooks(){return books;}
 
