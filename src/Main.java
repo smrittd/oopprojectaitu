@@ -1,39 +1,40 @@
-public class Main{
-    public static void main(String[] args){
-        System.out.println("Initializing Library Management System");
-        Book book1 = new Book("Grokking Algorithms", "Aditya Bhargava", "100-1012");
-        Book book2 = new Book("War and Peace", "Leo Tolstoy", "902-1923");
-        Book book3 = new Book("Grokking Algorithms", "Aditya Bhargava", "100-1012");
+import java.util.List;
 
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Initializing Active Library Management System");
 
-        LibraryMember member1 = new LibraryMember("Alisher", "101");
-        LibraryMember member2 = new LibraryMember("Leyla", "102");
+        Library library = new Library("Almaty Tech Library");
 
-        Library NationalLibrary = new Library("Qazaqstan Respublikasynyŋ kıtapxan");
+        Book b1 = new Book("Grokking Algorithms", "B-01", "Aditya Bhargava");
+        Book b2 = new Book("War and Peace", "B-02", "Leo Tolstoy");
+        Book b3 = new Book("Anna Karenina", "B-03", "Leo Tolstoy");
 
-        System.out.println("=== Adding Books ===");
-        NationalLibrary.addBook(book1);
-        NationalLibrary.addBook(book2);
+        library.addBook(b1);
+        library.addBook(b2);
+        library.addBook(b3);
 
-        System.out.println("\n=== Library Members ===");
-        member1.displayInfo();
-        member2.displayInfo();
-        NationalLibrary.displayLibraryInfo();
+        LibraryMember student1 = new LibraryMember("Alisher", "U-101");
+        LibraryMember student2 = new LibraryMember("Leyla", "U-102");
 
-        System.out.println("\n=== Checking System for Duplicates (Object Comparison) ===");
+        System.out.println("Executing Borrowing Logic:");
+        library.processBorrow("B-01", student1);
+        library.processBorrow("B-01", student2);
+        library.processBorrow("B-02", student2);
 
+        System.out.println("Checking Members and Catalog States:");
+        student1.displayInfo();
+        student2.displayInfo();
+        library.displayLibraryInfo();
 
-        System.out.println("Comparing book1 (\"" + book1.getTitle() + "\") and book2 (\"" + book2.getTitle() + "\"):");
-        if (book1.getIsbn().equals(book2.getIsbn())) {
-            System.out.println("Result: These are the same books (ISBN match).");
-        } else {
-            System.out.println("Result: These are different books.");
+        System.out.println("Data Pool Filtering (Tolstoy Books):");
+        List<Book> tolstoyBooks = library.filterByAuthor("Leo Tolstoy");
+        for (Book b : tolstoyBooks) {
+            System.out.println("Found: " + b.toString());
         }
-        System.out.println("\nComparing book1 (\"" + book1.getTitle() + "\") and book3 (\"" + book3.getTitle() + "\"):");
-        if (book1.getIsbn().equals(book3.getIsbn())) {
-            System.out.println("Result: Duplicate found! Books have identical ISBN numbers.");
-        } else {
-            System.out.println("Result: These are different books.");
-        }
+
+        System.out.println("Data Pool Sorting:");
+        library.sortLibraryCatalog();
+        library.displayLibraryInfo();
     }
 }
