@@ -5,16 +5,33 @@ import java.util.List;
 public class Library {
     private String libraryName;
     private final List<LibraryItem> items;
+    private final List<LibraryMember> members; // Добавили список читателей
 
     public Library(String libraryName) {
         this.libraryName = libraryName;
         this.items = new ArrayList<>();
+        this.members = new ArrayList<>();
     }
 
     public void addBook(LibraryItem item) {
         items.add(item);
         System.out.println("Library registered book: " + item.getTitle());
     }
+
+    public void addMember(LibraryMember member) {
+        if (!members.contains(member)) {
+            members.add(member);
+        }
+    }
+
+    public LibraryMember findMemberById(String userId) {
+        for (LibraryMember m : members) {
+            if (m.getUserId().equals(userId)) return m;
+        }
+        return null;
+    }
+
+    public List<LibraryItem> getItems() { return items; }
 
     public Book findBookById(String bookId) {
         for (LibraryItem item : items) {

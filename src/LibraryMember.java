@@ -21,13 +21,8 @@ public class LibraryMember {
 
     public List<Book> getBorrowedBooks() { return borrowedBooks; }
 
-    public void takeBook(Book book) {
-        borrowedBooks.add(book);
-    }
-
-    public void returnBook(Book book) {
-        borrowedBooks.remove(book);
-    }
+    public void takeBook(Book book) { borrowedBooks.add(book); }
+    public void returnBook(Book book) { borrowedBooks.remove(book); }
 
     public void displayInfo() {
         System.out.println("Member: " + name + " | User ID: " + userId + " | Books Borrowed: " + borrowedBooks.size());
@@ -47,7 +42,5 @@ public class LibraryMember {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(userId);
-    }
+    public int hashCode() { return Objects.hash(userId); }
 }
