@@ -7,6 +7,13 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         DatabaseConnection.initializeDatabase();
+
+        try {
+            ApiServer.start();
+        } catch (java.io.IOException e) {
+            System.out.println("Failed to start REST API server: " + e.getMessage());
+        }
+
         Library library = new Library("Almaty Tech Library");
 
         initDefaultBooks(library);

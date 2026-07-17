@@ -33,7 +33,7 @@ public class DatabaseConnection {
                 );
             """);
         } catch (SQLException e) {
-            System.out.println("Ошибка инициализации БД: " + e.getMessage());
+            System.out.println("error " + e.getMessage());
         }
     }
 }
